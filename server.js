@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 
-// Test this
+// Test this & We have configured it was a success
 
 process.on('uncaughtException', (err) => {
    console.log('UNHANDLED EXCEPTION! Shutting down...')
