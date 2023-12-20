@@ -16,8 +16,8 @@ const cors = require('cors')
 
 const app = express()
 
-app.set('view engine', 'pug')
-app.set('views', path.join(__dirname, 'views'))
+// app.set('view engine', 'pug')
+// app.set('views', path.join(__dirname, 'views'))
 
 // 1) Global MIDDLEWARES
 app.use(cors())
