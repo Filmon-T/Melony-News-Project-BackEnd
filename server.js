@@ -14,7 +14,7 @@ const app = require('./app')
 
 mongoose
    // .connect(process.env.DATABASE_LOCAL, {
-   .connect(mongodb+srv://filmonproxy:wvCj3JwHf98gkaLA@proxima-hope.a7es0of.mongodb.net/), {
+   .connect("mongodb+srv://filmonproxy:wvCj3JwHf98gkaLA@proxima-hope.a7es0of.mongodb.net/"), {
       useNewUrlParser: true,
       useCreateIndex: true,
       useFindAndModify: false,
