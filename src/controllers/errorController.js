@@ -41,56 +41,56 @@ const sendErrorDev = (err, req, res) => {
    }
    // B. Rendered website
    // console.error('Error 💥', err)
-   return res.status(err.statusCode).render('error', {
-      title: 'Something went wrong!',
-      msg: err.message,
-      currentTime
-   })
+   // return res.status(err.statusCode).render('error', {
+   //    title: 'Something went wrong!',
+   //    msg: err.message,
+   //    currentTime
+   // })
 }
 
-const sendErrorProd = (err, req, res) => {
-   // A. API
-   if (req.originalUrl.startsWith('/api')) {
-      // A. Operational, trusted error: send message to client
-      if (err.isOperational) {
-         return res.status(err.statusCode).render('error', {
-            title: 'Something went wrong!',
-            msg: err.message,
-            currentTime
-         })
-      }
-      // B. Programming or other unknown error: Don't leak error details
+// const sendErrorProd = (err, req, res) => {
+//    // A. API
+//    if (req.originalUrl.startsWith('/api')) {
+//       // A. Operational, trusted error: send message to client
+//       if (err.isOperational) {
+//          return res.status(err.statusCode).render('error', {
+//             title: 'Something went wrong!',
+//             msg: err.message,
+//             currentTime
+//          })
+//       }
+//       // B. Programming or other unknown error: Don't leak error details
 
-      // 1) Log error
-      console.error('Error 💥', err)
-      // 2) Send generic message
-      return res.status(err.statusCode).render('error', {
-         title: 'Something went wrong!',
-         msg: 'Please try again later!',
-         currentTime
-      })
-   }
+//       // 1) Log error
+//       console.error('Error 💥', err)
+//       // 2) Send generic message
+//       return res.status(err.statusCode).render('error', {
+//          title: 'Something went wrong!',
+//          msg: 'Please try again later!',
+//          currentTime
+//       })
+//    }
 
-   // B. Rendered WEBSITE
-   // A. Operational, trusted error: send message to client
-   if (err.isOperational) {
-      return res.status(err.statusCode).render('error', {
-         title: 'Something went wrong!',
-         msg: err.message,
-         currentTime
-      })
-   }
+//    // B. Rendered WEBSITE
+//    // A. Operational, trusted error: send message to client
+//    if (err.isOperational) {
+//       return res.status(err.statusCode).render('error', {
+//          title: 'Something went wrong!',
+//          msg: err.message,
+//          currentTime
+//       })
+//    }
 
-   // B. Programming or other unknown error: Don't leak error details
-   // 1) Log error
-   //    console.error('Error 💥', err)
-   // 2) Send generic message
-   return res.status(err.statusCode).render('error', {
-      title: 'Something went wrong!',
-      msg: 'Please try again later!!!',
-      currentTime
-   })
-}
+//    // B. Programming or other unknown error: Don't leak error details
+//    // 1) Log error
+//    //    console.error('Error 💥', err)
+//    // 2) Send generic message
+//    return res.status(err.statusCode).render('error', {
+//       title: 'Something went wrong!',
+//       msg: 'Please try again later!!!',
+//       currentTime
+//    })
+// }
 
 module.exports = (err, req, res, next) => {
    err.statusCode = err.statusCode || 500
